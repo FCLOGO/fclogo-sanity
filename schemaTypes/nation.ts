@@ -8,6 +8,7 @@ export default defineType({
   icon: EarthGlobeIcon,
   fields: [
     defineField({name: 'name', title: '名称 (Name)', type: 'internationalizedArrayString', validation: (Rule) => Rule.required()}),
+    defineField({name: 'code', title: '三字母代码 (Code)', type: 'string', validation: Rule => Rule.required().max(3)}),
     defineField({name: 'center', title: '地图中心坐标', type: 'geopoint'}),
     defineField({name: 'zoom', title: '地图缩放级别', type: 'number'}),
     defineField({name: 'flagSquare', title: '正方形国旗', type: 'image'}),
