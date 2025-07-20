@@ -5,7 +5,7 @@ import {useClient} from 'sanity'
 
 export function LogoSlugInput(props: SlugInputProps) {
   const {onChange, value} = props
-  const client = useClient({apiVersion: '2024-01-01'})
+  const client = useClient({apiVersion: '2025-07-19'})
   const [isLoading, setIsLoading] = useState(false)
 
   const subjectRef = useFormValue(['subject', '_ref']) as string | undefined
@@ -25,8 +25,8 @@ export function LogoSlugInput(props: SlugInputProps) {
         {
           "subject": *[_id == $subjectId][0]{
             "name": name[_key == "en"][0].value,
-            "type": type,
-            "associationCode": assn
+            "type": _type,
+            "categoryCode": ctgy
           },
           "styleValue": *[_id == "drafts." + $styleId || _id == $styleId][0].value.current
         }
@@ -44,7 +44,7 @@ export function LogoSlugInput(props: SlugInputProps) {
         return
       }
 
-      const association = subject.associationCode ? subject.associationCode.toLowerCase() : 'intl'
+      const category = subject.categoryCode ? subject.categoryCode.toLowerCase() : 'intl'
       const type = subject.type || ''
       const nameSlug = subject.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
       const versionSlug = String(version || '0000').replace('.', '-')
@@ -54,7 +54,7 @@ export function LogoSlugInput(props: SlugInputProps) {
       if (styleSlug !== 'color') {
         filename += `-${styleSlug}`
       }
-      const finalSlug = `/${association}/${type}/${filename}`
+      const finalSlug = `/${category}/${type}/${filename}`
       onChange(set({_type: 'slug', current: finalSlug}))
     } catch (error) {
       console.error(error)

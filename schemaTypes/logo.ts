@@ -8,7 +8,18 @@ export default defineType({
   type: 'document',
   icon: SparklesIcon,
   fields: [
-    defineField({name: 'subject', title: '所属主体 (Subject)', type: 'reference', to: [{type: 'subject'}], validation: Rule => Rule.required()}),
+    defineField({
+      name: 'subject', 
+      title: '所属主体 (Subject)', 
+      type: 'reference', 
+      to: [
+        {type: 'club'},
+        {type: 'comp'},
+        {type: 'team'},
+        {type: 'assn'},
+      ], 
+      validation: Rule => Rule.required()
+    }),
     defineField({name: 'version', title: '版本 (Version)', type: 'number',
       description: '输入徽标启用的年份 (YYYY) 或 年份.月份 (YYYY.MM)，不确定则填 0',
       initialValue: 0,

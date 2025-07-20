@@ -1,45 +1,15 @@
 import {defineType, defineField} from 'sanity'
-import {TiersIcon} from '@sanity/icons'
+import {BulbOutlineIcon} from '@sanity/icons'
 
 export default defineType({
-  name: 'subject',
-  title: '主体 (Subject)',
+  name: 'comp',
+  title: '赛事 (Competition)',
   type: 'document',
-  icon: TiersIcon,
+  icon: BulbOutlineIcon,
   fields: [
     defineField({name: 'name', title: '全称 (Full Name)', type: 'internationalizedArrayString', validation: Rule => Rule.required()}),
-    defineField({name: 'slug', title: '主体页面链接 Slug', type: 'slug',
-      options: {
-        source: (doc) => {
-          if (Array.isArray(doc.name)) {
-            const englishName = doc.name.find(
-              (langValue) => langValue._key === 'en'
-            )
-            return englishName?.value || ''
-          }
-          return ''
-        },
-      }, 
-      validation: Rule => Rule.required()
-    }),
-    defineField({name: 'status', title: '状态 (Status)', type: 'string', options: {
-        list: [
-          {title: '运营中 Active', value: 'active'},
-          {title: '停止运营 Inactive', value: 'inactive'},
-        ],
-        layout: 'radio',
-      }, initialValue: 'active'}),
-    defineField({name: 'type', title: '类型 (Type)', type: 'string', options: {
-        list: [
-          {title: '俱乐部 Club', value: 'club'},
-          {title: '赛事 Competition', value: 'comp'},
-          {title: '队伍 (国家队) Team', value: 'team'},
-          {title: '协会/联盟 Association', value: 'assn'},
-        ],
-      }, validation: Rule => Rule.required()}),
     defineField({name: 'nation', title: '国家 (Nation)', type: 'reference', to: [{type: 'nation'}]}),
-    defineField({name: 'assn', title: '协会/联盟 (Association)', description: '协会/联盟名称缩写', type: 'string'}),
-    defineField({name: 'location', title: '地理坐标 (Location)', type: 'geopoint'}),
+    defineField({name: 'ctgy', title: '所属分类 (Category)', description: '所属协会名称缩写, 用于生成 URL, 例如: CFA、DFB...', type: 'string'}),
     defineField({
       name: 'info',
       title: '详细信息 (Info)',
@@ -48,8 +18,11 @@ export default defineType({
         defineField({name: 'shortName', title: '简称 (Short Name)', type: 'internationalizedArrayString'}),
         defineField({name: 'localName', title: '本地名称 (Local Name)', type: 'string'}),
         defineField({name: 'founded', title: '创立年份 (Founded)', type: 'number'}),
-        defineField({name: 'city', title: '城市 (City)', type: 'internationalizedArrayString'}),
-        defineField({name: 'ground', title: '主场 (Ground)', type: 'internationalizedArrayString'}),
+        defineField({name: 'confederation', title: '所属联盟 (Confederation)', description: '赛事所属联盟名称缩写，例如: UEFA、AFC...', type: 'string'}),
+        defineField({name: 'teams', title: '球队数量 (Teams)', type: 'number'}),
+        defineField({name: 'level', title: '赛事级别 (Level)', type: 'internationalizedArrayString'}),
+        defineField({name: 'promotion', title: '升级至 (Promotion to)', type: 'internationalizedArrayString'}),
+        defineField({name: 'relegation', title: '降级至 (Relegation to)', type: 'internationalizedArrayString'}),
       ],
     }),
     defineField({
