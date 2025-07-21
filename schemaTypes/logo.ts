@@ -72,11 +72,11 @@ export default defineType({
       name: 'dateOriginal',
       title: '原始创建日期 (Original Date)',
       type: 'datetime',
-      description: '【仅用于迁移数据】此字段由系统自动填充，请勿手动修改。',
+      description: '仅用于迁移数据，由系统自动填充，请勿手动修改。',
       readOnly: true, 
       hidden: ({document}) => !document?.dateOriginal,
     }),
-    defineField({name: 'legacyLogoID', title: '旧版 Logo ID', type: 'string', description: '仅用于数据迁移，请勿手动修改'}),
+    defineField({name: 'legacyLogoID', title: '旧版 Logo ID', type: 'string', description: '仅用于数据迁移，请勿手动修改', readOnly: true,}),
   ],
   preview: {
     select: {

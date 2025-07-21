@@ -37,7 +37,7 @@ export default defineType({
       ],
     }),
     defineField({name: 'timelineComplete', title: '时间线是否完成', type: 'boolean', initialValue: false}),
-    defineField({name: 'legacySourceID', title: '旧版 Source ID', type: 'string', description: '仅用于数据迁移，请勿手动修改'}),
+    defineField({name: 'legacySourceID', title: '旧版 Source ID', type: 'string', description: '仅用于数据迁移，请勿手动修改', readOnly: true}),
   ],
   preview: {
     select: {
