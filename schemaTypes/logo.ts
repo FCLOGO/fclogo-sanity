@@ -59,6 +59,7 @@ export default defineType({
     }),
     defineField({name: 'pngUrl', title: 'PNG 下载链接 (from R2)', type: 'url', description: '指向 Cloudflare R2 中原始 PNG 文件的公开链接。', validation: Rule => Rule.required()}),
     defineField({name: 'svgUrl', title: 'SVG 下载链接 (from R2)', type: 'url', description: '指向 Cloudflare R2 中原始 SVG 文件的公开链接。', validation: Rule => Rule.required()}),
+    defineField({name: 'isBgDark', title: '使用深色背景', type: 'boolean', initialValue: false}),
     defineField({name: 'isOutdated', title: '是否为历史徽标', type: 'boolean', initialValue: false}),
     defineField({name: 'isDoubtful', title: '信息是否存在疑问', type: 'boolean', initialValue: false}),
     defineField({name: 'alternateNames', title: '曾用名 (Alternate Names)', type: 'array', of: [{type: 'string'}]}),
