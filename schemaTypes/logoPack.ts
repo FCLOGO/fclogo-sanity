@@ -2,7 +2,7 @@ import {defineType, defineField} from 'sanity'
 import {PackageIcon} from '@sanity/icons'
 
 export default defineType({
-  name: 'package',
+  name: 'logoPack',
   title: '徽标集 (Package)',
   type: 'document',
   icon: PackageIcon,
