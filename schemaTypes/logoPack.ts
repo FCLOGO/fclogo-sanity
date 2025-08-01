@@ -87,10 +87,10 @@ export default defineType({
       media: 'sourceLogo.previewImage',
     },
     prepare({title, season, media}) {
-      const enTitle = Array.isArray(title) ? title.find(t => t._key === 'en')?.value : 'No Title';
+      const enTitle = Array.isArray(title) ? title.find(t => t._key === 'zh-cn')?.value : 'No Title';
       return {
         title: enTitle,
-        subtitle: `Season: ${season}`,
+        subtitle: `赛季: ${season}`,
         media,
       };
     },
