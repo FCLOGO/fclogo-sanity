@@ -36,16 +36,9 @@ export default defineType({
     defineField({
       name: 'timeline', 
       title: '里程碑事件 (Timeline)', 
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          name: 'timeline',
-          title: '时间线模块',
-          fields: [
-            { name: 'events', type: 'array', of: [{type: 'timelineEvent'}] }
-          ]
-        },
+      type: 'object',
+      fields: [
+        { name: 'events', type: 'array', of: [{type: 'timelineEvent'}] }
       ]
     }),
   ],
