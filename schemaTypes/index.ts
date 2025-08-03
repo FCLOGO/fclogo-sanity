@@ -8,5 +8,6 @@ import team from './team'
 import nation from './nation'
 import contributor from './contributor'
 import logoStyle from './logoStyle'
+import link from './link'
 
-export const schemaTypes = [logo, logoPack, club, team, competition, association, confederation, nation, contributor, logoStyle]
+export const schemaTypes = [logo, logoPack, club, team, competition, association, confederation, nation, contributor, logoStyle, link]
