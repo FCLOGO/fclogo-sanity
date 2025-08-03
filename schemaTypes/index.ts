@@ -9,5 +9,7 @@ import nation from './nation'
 import contributor from './contributor'
 import logoStyle from './logoStyle'
 import link from './link'
+import page from './page'
+import timelineEvent from './objects/timelineEvent'
 
-export const schemaTypes = [logo, logoPack, club, team, competition, association, confederation, nation, contributor, logoStyle, link]
+export const schemaTypes = [logo, logoPack, club, team, competition, association, confederation, nation, contributor, logoStyle, link, page, timelineEvent]
