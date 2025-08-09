@@ -1,6 +1,7 @@
 import {defineType, defineField} from 'sanity'
 import {SparklesIcon} from '@sanity/icons'
 import {LogoSlugInput} from '../components/LogoSlugInput'
+import { R2Uploader } from '../components/R2Uploader';
 
 export default defineType({
   name: 'logo',
@@ -57,8 +58,26 @@ export default defineType({
       },
       validation: Rule => Rule.required(),
     }),
-    defineField({name: 'pngUrl', title: 'PNG 下载链接 (from R2)', type: 'string', description: '指向 Cloudflare R2 中原始 PNG 文件的相对路径。', validation: Rule => Rule.required()}),
-    defineField({name: 'svgUrl', title: 'SVG 下载链接 (from R2)', type: 'string', description: '指向 Cloudflare R2 中原始 SVG 文件的相对路径。', validation: Rule => Rule.required()}),
+    defineField({
+      name: 'pngUrl', 
+      title: 'PNG 路径 (from R2)', 
+      type: 'string', 
+      description: '上传 PNG 文件以自动生成 R2 路径。', 
+      components: {
+        input: R2Uploader,
+      },
+      validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'svgUrl', 
+      title: 'SVG 路径 (from R2)', 
+      type: 'string', 
+      description: '上传 SVG 文件以自动生成 R2 路径。', 
+      components: {
+        input: R2Uploader,
+      },
+      validation: Rule => Rule.required()
+    }),
     defineField({name: 'isBgDark', title: '使用深色背景', type: 'boolean', initialValue: false}),
     defineField({name: 'isOutdated', title: '是否为历史徽标', type: 'boolean', initialValue: false}),
     defineField({name: 'isDoubtful', title: '信息是否存在疑问', type: 'boolean', initialValue: false}),
